@@ -27,16 +27,32 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a URL defined
-         * and that the URL is not empty.
-         */
+        //Check that the feeds each have a url property 
+        //and that the length is not 0
+        //http://tosbourn.com/using-loops-in-jasmine/
+        function checkUrls(feed) {
+            it('have a valid url', function() {
+                expect(feed.url).toBeDefined();
+                expect(feed.url.length).not.toBe(0);    
+            });            
+         }
 
+         for (var i = 0;i < allFeeds.length; i++) {
+            checkUrls(allFeeds[i]);
+         }
+        
+        //Check that the feeds each have a name property 
+        //and that the length is not 0
+        function checkNames(feed) {
+            it('have a valid name', function() {
+                expect(feed.name).toBeDefined();
+                expect(feed.name.length).not.toBe(0);    
+            });            
+         }
 
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+         for (var i = 0;i < allFeeds.length; i++) {
+            checkNames(allFeeds[i]);
+         }
     });
 
 
