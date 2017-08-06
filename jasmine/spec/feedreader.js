@@ -27,27 +27,27 @@ $(function() {
         });
 
 
-        //Check that the feeds each have a url property 
+        //Check that the feeds each have a url property
         //and that the length is not 0
         //http://tosbourn.com/using-loops-in-jasmine/
         function checkUrls(feed) {
             it('have a valid url', function() {
                 expect(feed.url).toBeDefined();
-                expect(feed.url.length).not.toBe(0);    
-            });            
+                expect(feed.url.length).not.toBe(0);
+            });
          }
 
          for (var i = 0;i < allFeeds.length; i++) {
             checkUrls(allFeeds[i]);
          }
-        
-        //Check that the feeds each have a name property 
+
+        //Check that the feeds each have a name property
         //and that the length is not 0
         function checkNames(feed) {
             it('have a valid name', function() {
                 expect(feed.name).toBeDefined();
-                expect(feed.name.length).not.toBe(0);    
-            });            
+                expect(feed.name.length).not.toBe(0);
+            });
          }
 
          for (var i = 0;i < allFeeds.length; i++) {
@@ -57,8 +57,8 @@ $(function() {
 
 
     /* TODO: Write a new test suite named "The menu" */
-
-        /* TODO: Write a test that ensures the menu element is
+    describe('The Menu'), function() {
+         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
@@ -69,6 +69,7 @@ $(function() {
           * should have two expectations: does the menu display when
           * clicked and does it hide when clicked again.
           */
+    }
 
     /* TODO: Write a new test suite named "Initial Entries" */
 
