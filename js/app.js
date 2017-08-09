@@ -121,6 +121,7 @@ $(function() {
 
         $('body').addClass('menu-hidden');
         loadFeed(item.data('id'));
+        console.log(item.data('id'));
         return false;
     });
 

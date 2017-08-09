@@ -13,7 +13,7 @@ $(function() {
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
     */
-    describe('RSS Feeds', function() {
+    describe('RSS feeds', function() {
         /* This is our first test - it tests to make sure that the
          * allFeeds variable has been defined and that it is not
          * empty. Experiment with this before you get started on
@@ -55,21 +55,15 @@ $(function() {
          }
     });
 
-
-    /* TODO: Write a new test suite named "The menu" */
-    describe('The Menu', function() {
-         /* TODO: Write a test that ensures the menu element is
-         * hidden by default. You'll have to analyze the HTML and
-         * the CSS to determine how we're performing the
-         * hiding/showing of the menu element.
-         */
+    describe('The menu', function() {
+         /* Ensure the menu element is hidden by default.*/
          it('is hidden by default', function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
          });
-         /* TODO: Write a test that ensures the menu changes
-          * visibility when the menu icon is clicked. This test
-          * should have two expectations: does the menu display when
-          * clicked and does it hide when clicked again.
+         /* Ensure the menu changes visibility when the menu icon 
+          * is clicked. This test has two expectations: does the 
+          * menu display when clicked and does it hide when 
+          * clicked again.
           */
          describe('toggles when clicked', function() {
             beforeEach(function() {
@@ -94,6 +88,18 @@ $(function() {
          * Remember, loadFeed() is asynchronous so this test will require
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
+    describe('Initial entries', function() {
+        beforeEach(function(done) {
+            loadFeed(0, function() {
+                done();
+            });
+        });
+
+        it('contain at least one entry', function(done) {
+            expect($('.feed')).toBeDefined();
+        });
+
+    })
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
