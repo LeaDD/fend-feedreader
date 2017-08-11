@@ -96,7 +96,9 @@ $(function() {
         });
 
         it('contain at least one entry', function(done) {
-            expect($('.feed')).toBeDefined();
+            https://stackoverflow.com/questions/12250693/jquery-check-if-a-div-contains-a-div-with-class-on
+            expect($('.feed').find('.entry').length).toBeGreaterThan(0);
+            done();
         });
 
     })
