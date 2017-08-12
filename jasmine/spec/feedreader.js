@@ -80,14 +80,10 @@ $(function() {
          });
     });
 
-    /* TODO: Write new test suite named "Initial Entries" */
-
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+    /* Ensure when the loadFeed function is called and completes 
+     * its work, there is at least single .entry element within 
+     * the .feed container. 
+     */        
     describe('Initial entries', function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
@@ -96,17 +92,33 @@ $(function() {
         });
 
         it('contain at least one entry', function(done) {
-            https://stackoverflow.com/questions/12250693/jquery-check-if-a-div-contains-a-div-with-class-on
+            //https:stackoverflow.com/questions/12250693/jquery-check-if-a-div-contains-a-div-with-class-on
             expect($('.feed').find('.entry').length).toBeGreaterThan(0);
             done();
         });
+    });
 
-    })
+    /* Ensure when a new feed is loaded by the loadFeed function 
+     * that the content actually changes.
+     */        
+    describe('New feed selection', function() {
+        var curFeed = $('.feed');
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+        beforeEach(function(done) {
+            loadFeed(1, function() {
+                done();
+            });
+        });
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
+        console.log(curFeed);
+
+        it('changes the content', function(done) {
+            expect($('.feed')).not.toMatch(curFeed);
+            done();
+        });
+
+        console.log($('.feed'));
+
+
+    });
 }());
