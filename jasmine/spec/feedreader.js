@@ -111,14 +111,11 @@ $(function() {
         });
 
         console.log(curFeed);
+        console.log($('.feed'));
 
         it('changes the content', function(done) {
             expect($('.feed')).not.toMatch(curFeed);
-            done();
-        });
-
-        console.log($('.feed'));
-
+        })
 
     });
 }());
