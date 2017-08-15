@@ -60,9 +60,9 @@ $(function() {
          it('is hidden by default', function() {
             expect($('body').hasClass('menu-hidden')).toBe(true);
          });
-         /* Ensure the menu changes visibility when the menu icon 
-          * is clicked. This test has two expectations: does the 
-          * menu display when clicked and does it hide when 
+         /* Ensure the menu changes visibility when the menu icon
+          * is clicked. This test has two expectations: does the
+          * menu display when clicked and does it hide when
           * clicked again.
           */
          describe('toggles when clicked', function() {
@@ -80,10 +80,10 @@ $(function() {
          });
     });
 
-    /* Ensure when the loadFeed function is called and completes 
-     * its work, there is at least single .entry element within 
-     * the .feed container. 
-     */        
+    /* Ensure when the loadFeed function is called and completes
+     * its work, there is at least single .entry element within
+     * the .feed container.
+     */
     describe('Initial entries', function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
@@ -98,24 +98,24 @@ $(function() {
         });
     });
 
-    /* Ensure when a new feed is loaded by the loadFeed function 
+    /* Ensure when a new feed is loaded by the loadFeed function
      * that the content actually changes.
-     */        
+     */
     describe('New feed selection', function() {
-        var curFeed = $('.feed');
-
-        beforeEach(function(done) {
+        it('changes the content', function(done) {
+            //Load first feed
+            beforeEach(function(done) {
+                loadFeed(0, function() {
+                    done();
+                });
+            });
+            //Capture the HTML of the currently loaded feed ([0])
+            var curFeed = $('.feed').html();        
+            //Load the next feed and compare its html to the previous
             loadFeed(1, function() {
+                expect($('.feed').html()).not.toEqual(curFeed);
                 done();
             });
         });
-
-        console.log(curFeed);
-        console.log($('.feed'));
-
-        it('changes the content', function(done) {
-            expect($('.feed')).not.toMatch(curFeed);
-        })
-
     });
 }());
