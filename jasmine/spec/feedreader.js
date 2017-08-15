@@ -47,8 +47,8 @@ $(function() {
             });
          }
 
-         for (var i = 0;i < allFeeds.length; i++) {
-            checkNames(allFeeds[i]);
+         for (var j = 0;j < allFeeds.length; j++) {
+            checkNames(allFeeds[j]);
          }
     });
 
