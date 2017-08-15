@@ -26,28 +26,25 @@ $(function() {
         //Check that the feeds each have a url property
         //and that the length is not 0
         //http://tosbourn.com/using-loops-in-jasmine/
-        function checkUrls(feed) {
-            it('have a valid url', function() {
-                expect(feed.url).toBeDefined();
-                expect(feed.url.length).not.toBe(0);
+
+        //This was originally done with two functions, one for name and one
+        //for url. Changed function to take an additional parameter defining
+        //the feed property to be checked. Reviewer suggestion - THANK YOU!
+        function checkProps(feed, prop) {
+            var checkProp = "feed." + prop;
+
+            it('have a valid ' + prop, function() {
+                expect(checkProp).toBeDefined();
+                expect(checkProp.length).not.toBe(0);
             });
          }
 
          for (var i = 0;i < allFeeds.length; i++) {
-            checkUrls(allFeeds[i]);
-         }
-
-        //Check that the feeds each have a name property
-        //and that the length is not 0
-        function checkNames(feed) {
-            it('have a valid name', function() {
-                expect(feed.name).toBeDefined();
-                expect(feed.name.length).not.toBe(0);
-            });
+            checkProps(allFeeds[i], 'url');
          }
 
          for (var j = 0;j < allFeeds.length; j++) {
-            checkNames(allFeeds[j]);
+            checkProps(allFeeds[j], 'name');
          }
     });
 
@@ -81,16 +78,17 @@ $(function() {
      * the .feed container.
      */
     describe('Initial entries', function() {
+        //Since the callback function (the second argument of loadFeed) contains only
+        //one call to done(), you can shorten your code by passing the function itself
+        //(without invoking it) as the second argument: Reviewer suggestion - THANK YOU!
         beforeEach(function(done) {
-            loadFeed(0, function() {
-                done();
-            });
+            loadFeed(0, done)
+            //loadFeed(0, function() { <-OLD CODE - KEEP FOR REFERENCE
         });
 
-        it('contain at least one entry', function(done) {
+        it('contain at least one entry', function() {
             //https:stackoverflow.com/questions/12250693/jquery-check-if-a-div-contains-a-div-with-class-on
             expect($('.feed').find('.entry').length).toBeGreaterThan(0);
-            done();
         });
     });
 
@@ -98,13 +96,12 @@ $(function() {
      * that the content actually changes.
      */
     describe('New feed selection', function() {
+        //Load first feed
+        beforeEach(function(done) {
+            loadFeed(0, done);
+        });
+
         it('changes the content', function(done) {
-            //Load first feed
-            beforeEach(function(done) {
-                loadFeed(0, function() {
-                    done();
-                });
-            });
             //Capture the HTML of the currently loaded feed ([0])
             var curFeed = $('.feed').html();
             //Load the next feed and compare its html to the previous
