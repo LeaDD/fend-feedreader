@@ -30,19 +30,19 @@ $(function() {
         //This was originally done with two functions, one for name and one
         //for url. Changed function to take an additional parameter defining
         //the feed property to be checked. Reviewer suggestion - THANK YOU!
-        function checkProps(feed, prop) {
-            it('have a valid ' + prop, function() {
+        function checkProps(prop, type) {
+            it('have a valid ' + type, function() {
                 expect(prop).toBeDefined();
                 expect(prop.length).not.toBe(0);
             });
          }
 
          for (var i = 0;i < allFeeds.length; i++) {
-            checkProps(allFeeds[i], allFeeds[i].url);
+            checkProps(allFeeds[i].url, "url");
          }
 
          for (var j = 0;j < allFeeds.length; j++) {
-            checkProps(allFeeds[j], allFeeds[j].name);
+            checkProps(allFeeds[j].name, "name");
          }
     });
 
@@ -86,7 +86,7 @@ $(function() {
 
         it('contain at least one entry', function() {
             //https:stackoverflow.com/questions/12250693/jquery-check-if-a-div-contains-a-div-with-class-on
-            expect($('.feed').find('.entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
         });
     });
 
