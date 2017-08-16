@@ -82,7 +82,7 @@ $(function() {
         //one call to done(), you can shorten your code by passing the function itself
         //(without invoking it) as the second argument: Reviewer suggestion - THANK YOU!
         beforeEach(function(done) {
-            loadFeed(0, done)
+            loadFeed(0, done);
             //loadFeed(0, function() { <-OLD CODE - KEEP FOR REFERENCE
         });
 
