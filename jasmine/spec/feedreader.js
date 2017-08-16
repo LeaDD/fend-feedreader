@@ -31,20 +31,18 @@ $(function() {
         //for url. Changed function to take an additional parameter defining
         //the feed property to be checked. Reviewer suggestion - THANK YOU!
         function checkProps(feed, prop) {
-            var checkProp = "feed." + prop;
-
             it('have a valid ' + prop, function() {
-                expect(checkProp).toBeDefined();
-                expect(checkProp.length).not.toBe(0);
+                expect(prop).toBeDefined();
+                expect(prop.length).not.toBe(0);
             });
          }
 
          for (var i = 0;i < allFeeds.length; i++) {
-            checkProps(allFeeds[i], 'url');
+            checkProps(allFeeds[i], allFeeds[i].url);
          }
 
          for (var j = 0;j < allFeeds.length; j++) {
-            checkProps(allFeeds[j], 'name');
+            checkProps(allFeeds[j], allFeeds[j].name);
          }
     });
 
